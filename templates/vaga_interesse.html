@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Vagas de Interesse{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2 class="text-center">Minhas Vagas de Interesse</h2>
+  {% if vagas %}
+    <div class="list-group mt-4">
+      {% for vaga in vagas %}
+        <a href="/sobre_vaga/{{ vaga.id_vaga }}" class="list-group-item list-group-item-action">
+          <h5 class="mb-1">{{ vaga.titulo }}</h5>
+          <p class="mb-1">{{ vaga.descricao[:150] }}...</p>
+          <small>Empresa: {{ vaga.nome_empresa }}</small>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="alert alert-warning text-center mt-4" role="alert">
+      Você ainda não se candidatou a nenhuma vaga.
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

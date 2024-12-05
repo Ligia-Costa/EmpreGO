@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Login do Candidato{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2 class="text-center">Login do Candidato</h2>
+  <form method="POST" action="/login_candidato" class="mt-4">
+    <div class="mb-3">
+      <label for="email" class="form-label">E-mail</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="mb-3">
+      <label for="senha" class="form-label">Senha</label>
+      <input type="password" class="form-control" id="senha" name="senha" required>
+    </div>
+    {% if msg_erro %}
+      <div class="alert alert-danger" role="alert">{{ msg_erro }}</div>
+    {% endif %}
+    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+  </form>
+</div>
+{% endblock %}

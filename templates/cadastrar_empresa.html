@@ -1,0 +1,120 @@
+{% extends "base.html" %} {% block title %}Nova empresa {% endblock %} {% block
+content %}
+<ul>
+  <div class="d-flex justify-content-start mt-1">
+    <a href="/adm" class="btn btn-dark">Voltar</a>
+  </div>  
+</ul>
+<h2 style="text-align: center">Nova empresa</h2>
+<hr />
+
+<div class="container">
+  <div class="row justify-content-center"><!-- Centraliza horizontalmente -->
+    <div class="col-md-6">
+      <form action="/cadastrar_empresa" method="post">
+        <div class="mb-3">
+        <label for="nome_empresa" class="form-label"
+          >Nome Fantasia da Empresa</label>
+        <input
+          type="text"
+          class="form-control"
+          name="nome_empresa"
+          required
+        />
+        <div class="valid-feedback">
+          Informação válida!
+        </div>           
+        <div class="invalid-feedback">
+          Escreva o nome fantasia da empresa.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="cnpj" class="form-label">CNPJ</label>
+        <input
+          type="text"
+          class="form-control"
+          name="cnpj"
+          id="cnpj"
+          maxlength="14"
+          placeholder="Somente números"
+          required>
+          <div class="valid-feedback">
+            Informação válida!
+          </div>           
+          <div class="invalid-feedback">
+            Escreva um CNPJ válido.
+          </div>
+      </div>
+      <div class="mb-3">
+        <label for="telefone" class="form-label">Telefone de Contato</label>
+        <input
+          type="text"
+          class="form-control"
+          name="telefone"
+          id="telefone"
+          placeholder="Somente números"
+          required>
+          <div class="valid-feedback">
+            Informação válida!
+          </div>           
+          <div class="invalid-feedback">
+            Informe um telefone válido.
+          </div>
+        </div>
+        <h2>Informações para acesso da plataforma</h2>
+        <div class="mb-3">
+        <label for="email" class="form-label">E-mail</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          required>
+        </div>
+        <div class="mb-3">
+        <label for="senha" class="form-label">Senha</label>
+        <input
+          type="text"
+          class="form-control"
+          name="senha"
+          required>
+        </div>
+        <button class="btn btn-dark" type="submit">Cadastrar Empresa</button>
+        {% if msg_erro %}
+        <p>{{ msg_erro }}</p>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Script do BS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>  
+    <!-- Script de validação do BS -->
+    <script>
+        (() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+    </script>
+    <!-- Link do Input Mask --- Pré-validação -->
+    <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.8/dist/inputmask.min.js"></script>  
+<script>
+  Inputmask("99.999.999/9999-99").mask(document.getElementById ("cnpj")); //Máscara para CNPJ
+  Inputmask("(99)99999-9999").mask(document.getElementById ("telefone")); //Máscara para Telefone
+</script>
+{% endblock %}

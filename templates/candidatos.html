@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}EmpreGO! - Candidatos para a Vaga {% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Candidatos para a Vaga</h2>
+
+    <div class="arquivo-list-container">
+            {% for candidato in candidatos %}
+            <li class="mb-3 border-bottom py-2">
+                {{ candidato.nome }} - {{ candidato.telefone }} - {{ candidato.email }}
+                <a href="/download/{{ candidato.curriculo}}" class="btn btn-light download" target="_blank">Baixar</a>
+                <a href="/delete/{{ candidato.curriculo}}/{{ candidato.id_vaga }}" class="btn btn-light excluir">Excluir</a>
+            </li>
+            {% else %}
+                <p>Nenhum candidato encontrado!</p>
+            {% endfor %}
+        </ul>
+    </div>
+    <a href="/empresa" class="btn btn-secondary mt-3">Voltar</a>
+</div>
+{% endblock %}

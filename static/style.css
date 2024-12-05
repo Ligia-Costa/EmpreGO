@@ -1,0 +1,19 @@
+body{
+    min-height: 100vh;
+}
+.text-primary{
+    color: black !important;
+}
+
+/* .bg-light{
+    /* background-color: #ffe477 !important;
+} */
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover{
+    color: gray;
+}
